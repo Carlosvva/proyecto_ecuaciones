@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>ECUACIONES</h1>
+					<h3>MODELO MATEMÁTICO DE UN MOTOR DE CORRIENTE CONTINUA</h3>
+					<p>
+						<small>Creado por <a href="">Santiago Ramírez Forero</a> and <a href="">Macjainer Molano Ramos</a></small>
+					</p>
+				</section>
+				<section id="themes">
+					<h2>TEMAS DE LA PRESENTACIÓN</h2>
+					<p>
+						Agregamos unos temitas para mejorar la experiencia <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/black.css'); return false;">Black</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/white.css'); return false;">White</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/league.css'); return false;">League</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/sky.css'); return false;">Sky</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/beige.css'); return false;">Beige</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/serif.css'); return false;">Serif</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/blood.css'); return false;">Blood</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/night.css'); return false;">Night</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/moon.css'); return false;">Moon</a> -
+						<a href="#/themes" onclick="document.getElementById('theme').setAttribute('href','dist/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+
+
+				<section data-transition="slide" data-background="#ADD8E6" data-background-transition="zoom">
+					<h2>Esquema del Motor</h2>
+					<h3>Motor Separadamente Excitado</h3>
+					<img src='images/modelo_motor.jpg'>
+				</section>
+
+				<section data-transition="slide" data-background="#90EE90" data-background-transition="zoom">
+					<h3>Características Eléctricas:</h3>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						Vi: Tensión de alimentación del rotor (voltaje aplicado al rotor).
+						Ii: Corriente de armadura o corriente que circula por el rotor.
+						Ri: Resistencia del bobinado del rotor.
+						Li: Inductancia del bobinado del rotor.
+						ε: Fuerza contra-electromotriz del motor (tensión inducida en el rotor).
+						If: Corriente que circula por el estator. 
+						Rf: Resistencia del bobinado del estator. 
+						Lf: Inductancia del bobinado del estator.
+					</code></pre>
+					<h3>Características Eléctricas:</h3>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ω: Velocidad angular de giro del rotor
+						J: Momento de inercia equivalente del sistema rotor-carga.
+						B: Coeficiente de rozamiento viscoso (fuerza de fricción).
+					</code></pre>	
+				</section>
+
+				<section data-transition="slide" data-background="#800080" data-background-transition="zoom">
+					<p>Lo que está ocurriendo en este contexto es que el motor se alimenta con una tensión Vi en el rotor y una tensión Vf en el estator. La corriente Ii fluye por el rotor y la corriente If circula por el estator. Esta corriente y tensión aplicadas generan torque y permiten que el motor funcione, el motor está conectado a una carga mecánica en su eje, lo que afecta su comportamiento. La velocidad angular de giro ω está determinada por la combinación de las fuerzas eléctricas y la influencia de la carga mecánica, que se rige por el momento de inercia J y el coeficiente de fricción B.</p>
+				</section>
+
+				<section>
+					<h2>Esquema del Motor</h2>
+					<h3>Motor Separadamente Excitado</h3>
+					<img src='images/torques.jpg'>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						Torque Electromagnético: El torque electromagnético es generado por la interacción entre los campos magnéticos creados en el estator y el rotor debido a las corrientes eléctricas If e Ii. El torque electromagnético es proporcional a la corriente de armadura Ii y a la constante de torque electromagnético, kp. Cuanto mayor sea la corriente que circula por el rotor, mayor será el torque electromagnético y, por lo tanto, la fuerza de giro del rotor. 
+						Carga Mecánica: Cuando el rotor gira, puede estar conectado a una carga mecánica, lo que crea un par-motor resultante. Este par-motor influye en la velocidad angular del rotor y, por lo tanto, en la velocidad de giro del motor en conjunto. El momento de inercia J de la carga determina cómo esta responde a cambios en la velocidad angular.
+						Fricción: La fricción en el sistema ejerce una fuerza en sentido contrario al movimiento. Esta fuerza de fricción se opone al giro del motor y se modela a través del coeficiente de fricción B. A medida que la velocidad angular ω aumenta, la fuerza de fricción también aumenta, lo que crea un torque de fricción que se opone al torque electromagnético.
+					</code></pre>
+				</section>
+
+				<section>
+					<p>La combinación de estos factores, torque electromagnético, par-motor resultante debido a la carga mecánica y torque de fricción la cual determina cómo el motor gira y a qué velocidad lo hace. Es decir que la interacción entre la parte eléctrica (corriente, campo magnético) y la parte mecánica (carga, fricción) es lo que permite que el motor realice su función de convertir energía.</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section data-transition="slide" data-background="#b5510c" data-background-transition="zoom"> 
+						<h2>OBJETIVOS</h2>
+						<br>
+						<a href="#/2/1" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+						<h2>PRINCIPAL</h2>
+						<p>
+							
+						</p>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+							Desarrollar un modelo matemático preciso de un motor 
+							de corriente continua (CC) y analizar su 
+							comportamiento utilizando MATLAB.
+						</code></pre>
+					</section>
+					<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+						<h2>ESPECIFICOS</h2>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+							Derivar las ecuaciones diferenciales que describen
+							la dinámica de un motor de corriente continua, 
+							incluyendo las relaciones entre el torque, la inercia 
+							y la aceleración angular
+						</code></pre>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+							Utilizar MATLAB para simular y analizar el comportamiento 
+							del motor de corriente continua en diversas condiciones de 
+							operación, lo que incluye el estudio de sus respuestas en 
+							tiempo real y en estado estacionario
+						</code></pre>
+					</section>
+				</section>
+<!-- ecuacion de primer corte -->
+
+				<section>
+					<section data-background="#ADD8E6">
+						<h2>Deducción EDO de la Corriente y de la Velocidad Angular (Corte 1)</h2>
+						<br>
+						<a href="#/2/1" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<h2>EDO de la Corriente</h2>				
+						<img src='images/1-removebg-preview.png'>
+						<img src="images/2-removebg-preview.png">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<p>Para determinar el valor de 𝐶, se parte de la condición de que 𝑡 = 0, durante este instante, la corriente es nula, esto provocado por la ausencia del flujo de electrones, debido a esto, se constata que no hay presente fuerza contra -electromotriz, por ende, el voltaje es 0.</p>
+						<img src="images/3-removebg-preview.png">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<h2>EDO de la Velocidad Angular.</h2>
+						<img src="images/4.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<img src="images/5.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<img src="images/6.jpg">
+						<img src="images/7.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<p>Al obtener la velocidad angular, esta se reemplaza en la ecuación de la corriente.</p>
+						<img src="images/8.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<img src="images/9.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<img src="images/10.jpg">
+						<p>Dando como resultado la siguiente función de la corriente con respecto al tiempo.</p>
+						<img src="images/11.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<p>Al hacer uso de matlab, da como resultado la siguiente gráfica.</p>
+						<img src="images/12.jpg">
+					</section>
+				</section>
+<!-- ecuacion de orden superior -->
+
+				<section>
+					<section data-transition="slide" data-background="#90EE90" data-background-transition="zoom">
+						<h2>ECUACION DE ORDEN SUPERIOR</h2>
+						<br>
+						<a href="#/2/1" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+
+
+					<section data-auto-animate data-background="#FFFF00">
+						<h2 data-id="code-title">¿QUE ES?</h2>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+Una ecuación diferencial de orden superior es una
+ecuación que involucra derivadas de una función desconocida con
+respecto a una o más variables independientes. A diferencia de las
+ecuaciones diferenciales de primer orden, que involucran solo la
+primera derivada de la función desconocida, las ecuaciones
+diferenciales de orden superior involucran derivadas de orden
+superior, es decir, derivadas de segundo, tercer, cuarto, u orden
+superior. Aquí hay algunas características propias de una
+ecuación diferencial de orden superior:
+
+						</script></code></pre>
+					</section>
+					<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+Se pueden clasificar en lineales y no lineales, según si
+la función desconocida y sus derivadas aparecen
+linealmente o no en la ecuación.
+						</code></pre>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+Las ecuaciones diferenciales lineales de orden superior
+se pueden escribir en la forma 
+
+a_n (x)  (d´´y)/(dx^n )+a_(n-1) (x)  (d´´y)/(dx^(n-1) )+⋯a_1 (x)  dy/dx+a_0 (x)y=g(x)
+
+donde 𝑎𝑛(𝑥),…, 𝑎0(𝑥) y 𝑔(𝑥) son funciones
+conocidas, y 𝑎𝑛 (𝑥) ≠ 0 para todo x en el 
+dominio de la ecuación
+						</code></pre>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+							Las ecuaciones diferenciales lineales de orden superior
+							se pueden resolver mediante distintos métodos, como
+							el método de coeficientes indeterminados, el método de
+							variación de parámetros, o el método del Wronskiano
+													</code></pre>
+					</section>
+
+					<section data-transition="slide" data-background="#FF0000" data-background-transition="zoom">
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+							Función desconocida: La ecuación diferencial de orden
+							superior generalmente involucra una función
+							desconocida, a menudo denotada como "y(x)" o alguna
+							otra notación similar. El objetivo es encontrar una
+							función que satisfaga la ecuación diferencial, es decir,
+							encontrar la función "y(x)" que hace que la ecuación
+							sea verdadera.
+							
+						</code></pre>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+							Derivadas múltiples: En una ecuación de orden
+							superior, es común que aparezcan derivadas múltiples
+							de la función desconocida. Estas derivadas pueden ser
+							de diferentes órdenes, dependiendo de la ecuación
+							particular. Por ejemplo, una ecuación de segundo orden
+							involucra la segunda derivada de "y(x)".
+						</code></pre>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+Soluciones generales y particulares: Las ecuaciones
+diferenciales de orden superior tienen soluciones
+generales y particulares. La solución general incluye
+constantes arbitrarias que se determinan a partir de
+condiciones iniciales o límites específicos. La solución
+particular es una instancia específica de la solución
+general que satisface las condiciones dadas.
+													</code></pre>
+					</section>
+					
+				</section>
+
+				
+				<section>
+					<section data-transition="slide" data-background="#ADD8E6" data-background-transition="zoom">
+						<h2>ECUACION DIFERENCIAL DE SEGUNDO ORDEN DE LA VEOCIDAD ANGULAR (Corte 2)</h2>
+						<br>
+						<a href="#/2/1" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<h2>EDO Velocidad Angular</h2>				
+						<img src="IMAGES2/1.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<p>Se remplaza en la siguiente ecuación:</p>
+						<img src="IMAGES2/2.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<img src="IMAGES2/3.jpg">
+						<img src="IMAGES2/4.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<img src="IMAGES2/5.jpg">
+						<img src="IMAGES2/6.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<img src="IMAGES2/7.jpg">
+						<img src="IMAGES2/8.jpg">
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<img src="IMAGES2/9.jpg">
+						
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<p>Al usar Matlab, arroja la siguiente gráfica</p>
+						<img src="IMAGES2/10.jpg">
+					</section>
+				</section>
+
+				<section>
+					<section data-auto-animate data-transition="slide" data-background="#FFFF00" data-background-transition="zoom">
+						<h2 data-id="code-title">MATLAB SEGUNDO CORTE</h2>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+	syms w(t) t 
+	wp=110/2.0782
+	eqn=0.00037*diff(w,2)+0.16753*diff(w)+2.0782*w==0
+	S=dsolve(eqn)+wp
+	
+	syms t 
+	ec=51.1852*exp(-12.7672*t)-1.5817*exp(-400.0166*t)-52.9304*exp(-124667*t)
+	fplot(ec,[-1 5])
+	axis([-1 5 -3 55])
+	grid on 
+	
+	hold on
+	syms x t
+	x=-2.149895316875726e-291
+	fplot(x)
+						</script></code></pre>
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<h2>GRAFICA</h2>				
+						<img src='images/MAT2.jpg'>
+					</section>
+					
+				</section>
+
+				<section>
+					<section data-auto-animate data-transition="slide" data-background="#90EE90" data-background-transition="zoom">
+						<h2 data-id="code-title">MATLAB TERCER CORTE</h2>
+						
+					</section>
+
+					<section data-transition="slide" data-background="#FFC0CB" data-background-transition="zoom">
+						<h2 data-id="code-title">FUNCIÓN 1 CUANDO L=0.0011 </h2>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+							syms s t omega0 % Definir variables simbólicas
+
+							% Transformada de Laplace de la ecuación
+							eq = 110 == (0.00037*s^2 + 0.16753*s + 2.0782)*omega0 - (0.00037*s + 0.16753)*omega0;
+							
+							% Resolver la ecuación para omega(s)
+							omega_s = solve(eq, omega0);
+							
+							% Transformada inversa de Laplace para obtener omega(t)
+							omega_t = ilaplace(omega_s, s, t);
+							
+							% Sustituir el valor inicial de omega(t)
+							omega_t = subs(omega_t, omega0, 1.0); % Reemplaza 1.0 con tu valor inicial
+							
+							% Graficar omega(t)
+							fplot(omega_t, [0, 3.5]); % Ajusta el rango de tiempo según tus necesidades
+							xlabel('Tiempo (t)');
+							ylabel('omega(t)');
+							title('Gráfico de omega(t)');
+												</script></code></pre>
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<h2>GRAFICA</h2>				
+						<img src='images/MAT31.jpg'>
+					</section>
+					<section data-transition="slide" data-background="#9932CC" data-background-transition="zoom">
+						<h2 data-id="code-title">FUNCIÓN 2 CUANDO L=0 </h2>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+							syms s t omega0 % Definir variables simbólicas
+
+							% Transformada de Laplace de la ecuación
+							eq = 110 == (0.16753*s + 2.0782)*omega0 - 0.16753*omega0;
+							
+							% Resolver la ecuación para omega(s)
+							omega_s = solve(eq, omega0);
+							
+							% Transformada inversa de Laplace para obtener omega(t)
+							omega_t = ilaplace(omega_s, s, t);
+							
+							% Sustituir el valor inicial de omega(t)
+							omega_t = subs(omega_t, omega0, 1.0); % Reemplaza 1.0 con tu valor inicial
+							
+							% Graficar omega(t)
+							fplot(omega_t, [0, 10]); % Ajusta el rango de tiempo según tus necesidades
+							xlabel('Tiempo (t)');
+							ylabel('omega(t)');
+							title('Gráfico de omega(t)');
+												</script></code></pre>
+					</section>
+					<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom">
+						<h2>GRAFICA</h2>				
+						<img src='images/MAT32.jpg'>
+					</section>
+					
+				</section>
+				
+
+			
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)" data-transition="slide" data-background="#ADD8E6" data-background-transition="zoom">
+					<h2>CONCLUSIONES</h2>
+					<p>En la investigación y análisis del motor de corriente
+						continua (CC) utilizando ecuaciones diferenciales y la
+						herramienta MATLAB, se han obtenido las siguientes
+						conclusiones clave:</p>
+					<div class="r-hstack justify-center">
+						<div data-id="box1" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+						<div data-id="box2" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+						<div data-id="box3" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+					</div>
+				</section>
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)" data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<div class="r-hstack justify-center">
+						<div data-id="box1" data-auto-animate-delay="0" style="background: cyan; width: 150px; height: 100px; margin: 10px;"></div>
+						<div data-id="box2" data-auto-animate-delay="0.1" style="background: magenta; width: 150px; height: 100px; margin: 10px;"></div>
+						<div data-id="box3" data-auto-animate-delay="0.2" style="background: yellow; width: 150px; height: 100px; margin: 10px;"></div>
+					</div>
+					<h2 style="margin-top: 20px;">CONCLUSIONES</h2>
+				</section>
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)" data-transition="slide" data-background="#FFC0CB" data-background-transition="zoom">
+					<div class="r-stack">
+						<div data-id="box1" style="background: cyan; width: 300px; height: 300px; border-radius: 200px;"></div>
+						<div data-id="box2" style="background: magenta; width: 200px; height: 200px; border-radius: 200px;"></div>
+						<div data-id="box3" style="background: yellow; width: 100px; height: 100px; border-radius: 200px;"></div>
+					</div>
+					<h2 style="margin-top: 20px;">CONCLUSIONES</h2>
+				</section>
+
+				<section data-transition="slide" data-background="#ADD8E6" data-background-transition="zoom">
+					<h2>MODELADO PRECISO:</h2>
+					<p>
+El uso de ecuaciones diferenciales ha
+demostrado ser una técnica efectiva para modelar el
+comportamiento del motor de CC. Esto proporciona una
+representación detallada y precisa de su funcionamiento
+en una amplia gama de condiciones
+					</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## FLEXIBILIDAD DE MATLAB: MATLAB 
+
+						
+
+						```html []
+						<section data-markdown>
+							se ha destacado
+							como una plataforma versátil y potente para el análisis
+							de sistemas dinámicos, incluyendo motores de CC. Su
+							capacidad para resolver ecuaciones diferenciales y su
+							amplia gama de herramientas y bibliotecas facilitan la
+							simulación y el análisis de estos sistemas de manera
+							eficiente.
+						</section>
+						```
+					</script>
+				</section>
+
+				<section data-transition="slide" data-background="#FFC0CB" data-background-transition="zoom">
+					<h2 data-id="code-title">FUNCIÓN 1 CUANDO L=0.0011 </h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						En este caso, estás considerando una inductancia finita 
+						en el circuito del motor. La inclusión de la inductancia 
+						en el modelo afectará la respuesta del sistema. La inductancia 
+						introduce una propiedad de almacenamiento de energía en forma 
+						de campo magnético, lo que puede resultar en una respuesta 
+						más suave o atenuada de la corriente en el circuito del motor 
+						en comparación con un circuito sin inductancia.
+											</script></code></pre>
+				</section>
+				
+				<section data-transition="slide" data-background="#9932CC" data-background-transition="zoom">
+					<h2 data-id="code-title">FUNCIÓN 2 CUANDO L=0 </h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						Cuando L es igual a 0, estás asumiendo un circuito sin 
+						inductancia. Esto implica que no hay almacenamiento de 
+						energía en forma de campo magnético en el circuito del 
+						motor. En la práctica, esto podría significar que el 
+						motor está conectado directamente a la fuente de corriente, 
+						sin ningún componente inductivo en el medio. En este caso, 
+						la respuesta de la corriente podría ser más inmediata y 
+						no estaría sujeta a los efectos de almacenamiento de 
+						energía de la inductancia. La corriente podría aumentar 
+						o disminuir de manera más abrupta en respuesta a los 
+						cambios en el voltaje o la carga.
+											</script></code></pre>
+				</section>				
+
+				<section>
+					<h2>Export to PDF</h2>
+					<p>Acá encuentras el PDF DEL CORTE 1 <a href="https://www.flipsnack.com/anzinesocialesprofile/corte-1/full-view.html">exported to PDF</a></p>
+					<p>Acá encuentras el PDF DEL CORTE 2 <a href="https://www.flipsnack.com/anzinesocialesprofile/corte-2/full-view.html">exported to PDF</a></p>
+				</section>
+
+
+			
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body>
+</html>
